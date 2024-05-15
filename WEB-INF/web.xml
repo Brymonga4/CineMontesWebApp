@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>CineMontesD</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  
+    <error-page>
+        <location>/error.jsp</location>
+    </error-page> 
+ 
+ 
+  <context-param>
+    <param-name>dirUploadFiles</param-name>
+    <param-value>/images/peliculas</param-value>
+  </context-param>
+ 
+   <context-param>
+    <param-name>dirUploadAvatar</param-name>
+    <param-value>/images/avatares</param-value>
+  </context-param> 
+  
+   <context-param>
+    <param-name>dirUploadQR</param-name>
+    <param-value>/images/QR</param-value>
+  </context-param>   
+ 
+   <context-param>
+    <param-name>dirUploadPDFs</param-name>
+    <param-value>/images/entradas</param-value>
+  </context-param>  
+  
+  <context-param>
+    <param-name>maxFilesSize</param-name>
+    <param-value>3072000</param-value>
+  </context-param>  
+
+  <filter>
+    <filter-name>FiltroAdmin</filter-name>
+    <filter-class>filtros.FiltroAdmin</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>FiltroAdmin</filter-name>
+    <url-pattern>/canjearEntrada.jsp</url-pattern>
+	<url-pattern>/crearFuncion.jsp</url-pattern>
+	<url-pattern>/crearSala.jsp</url-pattern>
+	<url-pattern>/peliForm.jsp</url-pattern>
+	<url-pattern>/editPeliForm.jsp</url-pattern>
+	<url-pattern>/listadoUsuarios.jsp</url-pattern>
+  </filter-mapping>
+
+  <filter>
+    <filter-name>FiltroUsuario</filter-name>
+    <filter-class>filtros.FiltroUsuario</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>FiltroUsuario</filter-name>
+    <url-pattern>/butacasFuncion.jsp</url-pattern>
+    <url-pattern>/comprarEntradas.jsp</url-pattern>
+    <url-pattern>/editarCuenta.jsp</url-pattern>
+    <url-pattern>/perfil.jsp</url-pattern>
+  </filter-mapping>
+
+
+	<filter>
+	<filter-name>FiltroCharset</filter-name>
+	<filter-class>filtros.FiltroCharset</filter-class>
+	</filter>
+	
+	<filter-mapping>
+		<filter-name>FiltroCharset</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+</web-app>
